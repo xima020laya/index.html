@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人道主义紧急呼吁 | 司法资产冻结引发的生命危机</title>
-    <!-- 引入 Tailwind CSS 官方 CDN -->
+    <title>Humanitarian Urgent Appeal | Life-Threatening Crisis via Judicial Asset Freezing</title>
+    <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- 引入 FontAwesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,209 +24,266 @@
                 transform: translateX(-50%);
             }
         }
+        /* 用于语言切换控制的隐藏类 */
+        .lang-hidden { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans antialiased">
 
-    <!-- 1. 置顶通栏警示条 -->
-    <div class="bg-red-600 text-white text-center py-2.5 px-4 text-sm font-bold tracking-wide animate-pulse">
-        <i class="fa-solid fa-triangle-exclamation mr-2"></i> EMERGENCY HUMANITARIAN APPEAL / 紧急人道主义困难豁免申请
+    <!-- 1. 置顶通栏：包含警示信息与语言切换按钮 -->
+    <div class="bg-red-600 text-white py-2.5 px-4 text-xs md:text-sm font-bold tracking-wide shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="animate-pulse flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span class="lang-en">EMERGENCY HUMANITARIAN APPEAL / HARDSHIP WAIVER REQUEST</span>
+                <span class="lang-zh lang-hidden">紧急人道主义困难豁免申请 / 立即拨流请求</span>
+            </div>
+            <!-- 语言切换器 -->
+            <div class="flex items-center gap-1 bg-black/20 rounded-lg p-0.5 border border-white/20">
+                <button id="btn-en" onclick="switchLang('en')" class="px-2.5 py-1 rounded text-xs font-black transition-all bg-white text-red-700 shadow-xs cursor-pointer">EN</button>
+                <button id="btn-zh" onclick="switchLang('zh')" class="px-2.5 py-1 rounded text-xs font-bold transition-all text-white hover:bg-white/10 cursor-pointer">中文</button>
+            </div>
+        </div>
     </div>
 
-    <!-- 2. Hero 头部：核心诉求与主标题 -->
+    <!-- 2. Hero 头部：核心诉求与司法坐标 -->
     <header class="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-12 md:py-20 px-4">
         <div class="max-w-5xl mx-auto text-center">
             <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-xs uppercase font-extrabold px-3 py-1 rounded-full tracking-wider">
-                生命进入倒计时 / Life-Threatening Emergency
+                <span class="lang-en">Life-Threatening Emergency / Survival Count Down</span>
+                <span class="lang-zh lang-hidden">生命进入倒计时 / 紧急人道主义救援</span>
             </span>
+            
             <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white mt-4 mb-6 leading-tight">
-                因合法个人资产遭刑事冻结，<br class="hidden md:block">
-                癌症晚期母亲被迫全面终止放疗与核心抢救方案
+                <span class="lang-en">Due to Criminal Freezing of Clean Capital, Late-Stage Cancer Mother Forced to Forgo All Life-Sustaining Tumor Treatments</span>
+                <span class="lang-zh lang-hidden">因合法个人资产遭刑事冻结，<br class="hidden md:block">癌症晚期母亲被迫全面终止放疗与核心抢救方案</span>
             </h1>
-            <p class="text-slate-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-10">
-                本医疗证据汇编及背后的家庭财务绝境证明，已作为第三人财产权利主张及免除法庭费用申请（In Forma Pauperis）的核心支持材料，由美国纽约南区联邦地方法院于 2026年7月10日 正式上传并存卷。
+            
+            <p class="text-slate-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed mb-10">
+                <span class="lang-en">This medical evidence compendium and proof of complete family financial insolvency have been formally docketed by the United States District Court for the Southern District of New York on July 10, 2026, under Document No. 863, serving as core evidence for the Third-Party Property Claim.</span>
+                <span class="lang-zh lang-hidden">本医疗证据汇编及背后的家庭财务绝境证明，已作为第三人财产权利主张及免除法庭费用申请（In Forma Pauperis）的核心支持材料，由美国纽约南区联邦地方法院于 2026年7月10日 正式上传并存卷。</span>
             </p>
 
-            <!-- 核心司法坐标卡片 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto text-left">
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 shadow-xl">
-                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">美国联邦法院案号</div>
-                    <div class="text-sm font-extrabold text-white">United States v. Kwok, et al.</div>
+            <!-- 司法坐标卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto text-left text-gray-900">
+                <div class="bg-slate-800 border border-slate-700 p-5 rounded-xl text-white">
+                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">U.S. Federal Court Case</div>
+                    <div class="text-sm font-extrabold">United States v. Kwok, et al.</div>
                     <div class="text-xs text-slate-400 mt-1">Case No. 1:23-cr-00118-1-AT, SDNY</div>
                 </div>
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-red-500/40 shadow-xl relative overflow-hidden">
-                    <div class="absolute right-0 top-0 bg-red-600 text-[10px] uppercase font-black px-2 py-0.5 text-white">已存卷</div>
-                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">官方司法存卷编号</div>
+                <div class="bg-slate-800 border border-red-500/40 p-5 rounded-xl text-white relative overflow-hidden">
+                    <div class="absolute right-0 top-0 bg-red-600 text-[9px] uppercase font-black px-2 py-0.5">DOCKETED</div>
+                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Official Judicial Docket</div>
                     <div class="text-base font-black text-red-400">[Document No. 863]</div>
-                    <div class="text-xs text-slate-400 mt-1">上传/提交日期：2026年7月10日</div>
+                    <div class="text-xs text-slate-400 mt-1">Filed/Uploaded: July 10, 2026</div>
                 </div>
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 shadow-xl">
-                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">GTV 公平基金参考代码</div>
+                <div class="bg-slate-800 border border-slate-700 p-5 rounded-xl text-white">
+                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">GTV Fair Fund Reference</div>
                     <div class="text-sm font-extrabold text-white">Code: D6GUYDEQZL</div>
-                    <div class="text-xs text-red-400 mt-1 font-semibold">目标申请解冻资本: $229,309.00</div>
+                    <div class="text-xs text-red-400 mt-1 font-semibold">Target Capital: $229,309.00 USD</div>
                 </div>
             </div>
 
-            <!-- 核心行动按钮 (CTA) -->
+            <!-- 行动按钮 (CTA) -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
                 <a href="#evidence-text" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 rounded-lg shadow-lg transition-all text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-file-invoice-dollar"></i> 查阅中英文动议全文
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span class="lang-en">Review Full Motion Texts</span>
+                    <span class="lang-zh lang-hidden">查阅中英文动议全文</span>
                 </a>
                 <a href="#" target="_blank" class="bg-transparent hover:bg-slate-800 text-slate-300 border border-slate-600 font-medium px-6 py-3.5 rounded-lg transition-all text-center flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-google-drive text-green-400"></i> 查看瘫痪现状视频证明 (Google Drive)
+                    <i class="fa-brands fa-google-drive text-green-400"></i>
+                    <span class="lang-en">Video Evidence of Paralysis (Google Drive)</span>
+                    <span class="lang-zh lang-hidden">查看瘫痪现状视频证明 (Google Drive)</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 主体内容容器 -->
+    <!-- 主体部分 -->
     <main class="max-w-5xl mx-auto px-4 py-12">
 
         <!-- 3. 患者档案简报 -->
         <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 mb-12">
             <h2 class="text-xl font-bold text-slate-900 mb-6 pb-2 border-b border-gray-100 flex items-center gap-2">
-                <i class="fa-solid fa-id-card text-blue-600"></i> 患者基本信息与医学首要诊断
+                <i class="fa-solid fa-id-card text-blue-600"></i>
+                <span class="lang-en">Patient Profile & Diagnosis Classification</span>
+                <span class="lang-zh lang-hidden">患者基本信息与医学首要诊断</span>
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
                 <div>
-                    <div class="text-xs text-gray-500 font-medium mb-0.5">法定姓名</div>
-                    <div class="text-base font-bold text-gray-900">唐学会 (Tang Xuehui)</div>
+                    <div class="text-xs text-gray-500 font-medium mb-0.5">Full Legal Name / 法定姓名</div>
+                    <div class="text-base font-bold text-gray-900">Tang Xuehui (唐学会)</div>
                 </div>
                 <div>
-                    <div class="text-xs text-gray-500 font-medium mb-0.5">出生日期 / 年龄</div>
-                    <div class="text-base font-bold text-gray-900">1982.06.03 / 44岁</div>
+                    <div class="text-xs text-gray-500 font-medium mb-0.5">Date of Birth / 年龄</div>
+                    <div class="text-base font-bold text-gray-900">June 03, 1982 / 44 Yrs</div>
                 </div>
                 <div>
-                    <div class="text-xs text-gray-500 font-medium mb-0.5">国籍</div>
-                    <div class="text-base font-bold text-gray-900">中国 (P.R. China)</div>
+                    <div class="text-xs text-gray-500 font-medium mb-0.5">Nationality / 国籍</div>
+                    <div class="text-base font-bold text-gray-900">P.R. China (中国)</div>
                 </div>
                 <div>
-                    <div class="text-xs text-gray-500 font-medium mb-0.5">报告日期</div>
-                    <div class="text-base font-bold text-gray-900">2026年7月19日</div>
+                    <div class="text-xs text-gray-500 font-medium mb-0.5">Report Date / 报告日期</div>
+                    <div class="text-base font-bold text-gray-900">July 19, 2026</div>
                 </div>
             </div>
             <div class="mt-6 bg-red-50 border border-red-100 rounded-xl p-4">
-                <div class="text-xs text-red-700 font-bold uppercase tracking-wider mb-1">首要核心诊断分类 (Primary Diagnosis)</div>
+                <div class="text-xs text-red-700 font-bold uppercase tracking-wider mb-1">Primary Diagnostic Classification / 首要核心诊断</div>
                 <div class="text-base font-black text-red-900 leading-snug">
-                    弥漫大B细胞淋巴瘤（DLBCL）伴中枢神经系统（CNS）广泛且极具侵袭性的二级转移
+                    <span class="lang-en">Diffuse Large B-Cell Lymphoma (DLBCL) with extensive, aggressive Secondary Central Nervous System (CNS) Metastasis</span>
+                    <span class="lang-zh lang-hidden">弥漫大B细胞淋巴瘤（DLBCL）伴中枢神经系统（CNS）广泛且极具侵袭性的二级转移</span>
                 </div>
             </div>
         </section>
 
-        <!-- 4. 临床病程与财务恶化双线时间轴 -->
+        <!-- 4. 时间轴模块 -->
         <section class="mb-12">
-            <h2 class="text-2xl font-black text-slate-900 text-center mb-2">临床病程链与家庭财务危机记录</h2>
-            <p class="text-center text-gray-500 text-sm mb-10 max-w-2xl mx-auto">以下客观时间轴证实：治疗进程的数次严重降级与最终被迫全盘放弃，完全由于家庭唯一的救命资金被刑事冻结所直接导致。</p>
+            <h2 class="text-2xl font-black text-slate-900 text-center mb-2">
+                <span class="lang-en">Chronological Medical Chains & Financial Crisis</span>
+                <span class="lang-zh lang-hidden">临床病程链与家庭财务危机记录</span>
+            </h2>
+            <p class="text-center text-gray-500 text-xs md:text-sm mb-10 max-w-2xl mx-auto">
+                <span class="lang-en">The objective timeline below proves that the severe medical downgrade and total care abandonment were directly caused by the freezing of the family's life savings.</span>
+                <span class="lang-zh lang-hidden">以下客观时间轴证实：治疗进程的数次严重降级与最终被迫全盘放弃，完全由于家庭唯一的救命资金被刑事冻结所直接导致。</span>
+            </p>
             
             <div class="relative timeline-line">
                 <!-- 阶段 1 -->
-                <div class="relative flex flex-col md:flex-row items-start mb-12 group">
+                <div class="relative flex flex-col md:flex-row items-start mb-12">
                     <div class="absolute left-4 md:left-1/2 -translate-x-1/2 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 shadow-md">1</div>
-                    <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
-                        <span class="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded">2023年8月 – 2023年10月</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1">初次组织病理学确诊与基线分期</h4>
-                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">
-                            复旦肿瘤医院活检提示异型细胞增生。上海瑞金医院特检（#A2023-15848）明确诊断为高侵袭性非霍奇金B细胞淋巴瘤，伴高风险双表达特征：C-MYC(50%+)、BCL-2(50%+)。PET/CT证实已扩散至胰腺及结外器官，Ann Arbor 分期 IVB 期（高危组）。
+                    <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right text-sm">
+                        <span class="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-0.5 rounded">Aug 2023 – Oct 2023</span>
+                        <h4 class="text-base font-bold text-slate-900 mt-1">
+                            <span class="lang-en">Primary Histopathological Diagnosis & Staging</span>
+                            <span class="lang-zh lang-hidden">初次组织病理学确诊与基线分期</span>
+                        </h4>
+                        <p class="text-gray-600 mt-2 leading-relaxed text-xs md:text-sm">
+                            <span class="lang-en">Fudan University Cancer Center biopsy indicated atypical proliferation. Ruijin Hospital report (#A2023-15848) established High-Aggressiveness B-cell Lymphoma with high-risk double-expression features: C-MYC(50%+) and BCL-2(50%+). PET/CT staging verified extranodal infiltration into pancreas. Ann Arbor Stage IVB (High-Intermediate risk group).</span>
+                            <span class="lang-zh lang-hidden">复旦肿瘤医院活检提示异型细胞增生。上海瑞金医院特检（#A2023-15848）明确诊断为高侵袭性非霍奇金B细胞淋巴瘤，伴高风险双表达特征：C-MYC(50%+)、BCL-2(50%+)。PET/CT证实已扩散至胰腺及结外器官，Ann Arbor 分期 IVB 期（高危组）。</span>
                         </p>
                     </div>
                     <div class="hidden md:block w-1/2"></div>
                 </div>
 
                 <!-- 阶段 2 -->
-                <div class="relative flex flex-col md:flex-row items-start mb-12 group">
+                <div class="relative flex flex-col md:flex-row items-start mb-12">
                     <div class="absolute left-4 md:left-1/2 -translate-x-1/2 bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 shadow-md">2</div>
                     <div class="hidden md:block w-1/2"></div>
-                    <div class="w-full md:w-1/2 pl-12 md:pl-12">
-                        <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded">2023年9月 – 2024年中期</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 text-orange-700">因费用被迫降级：放弃瑞金，中转区中心医院</h4>
-                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">
-                            在瑞金医院启动首期标准免疫化疗（R-CHOP方案）。由于顶级三甲医院自付费用极其高昂，家庭积蓄在完成初期化疗后迅速枯竭。<strong>为了节省床位费与护理费，家属被迫放弃在瑞金医院的后续一线高专科监测</strong>，中转至开销较低的徐汇区中心医院勉强维持低成本常规化疗。
+                    <div class="w-full md:w-1/2 pl-12 md:pl-12 text-sm">
+                        <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded">Late 2023 – Mid-2024</span>
+                        <h4 class="text-base font-bold text-orange-700 mt-1">
+                            <span class="lang-en">Forced Medical Downgrade Due to Cost Exhaustion</span>
+                            <span class="lang-zh lang-hidden">因费用被迫降级：放弃瑞金，中转区中心医院</span>
+                        </h4>
+                        <p class="text-gray-600 mt-2 leading-relaxed text-xs md:text-sm">
+                            <span class="lang-en">Commenced Cycle 1 of standard R-CHOP at Ruijin Hospital. Due to exorbitant out-of-pocket tier-1 costs, the family reserves were depleted. To minimize bed and nursing costs, the family was forced to abandon specialized care at Ruijin Hospital and transferred to Xuhui District Central Hospital for low-cost, conventional chemotherapy.</span>
+                            <span class="lang-zh lang-hidden">在瑞金医院启动首期标准免疫化疗（R-CHOP方案）。由于顶级三甲医院自付费用极其高昂，家庭积蓄在完成初期化疗后迅速枯竭。为了节省床位费与护理费，家属被迫放弃在瑞金医院的后续一线高专科监测，中转至开销较低的徐汇区中心医院勉强维持低成本常规化疗。</span>
                         </p>
                     </div>
                 </div>
 
                 <!-- 阶段 3 -->
-                <div class="relative flex flex-col md:flex-row items-start mb-12 group">
+                <div class="relative flex flex-col md:flex-row items-start mb-12">
                     <div class="absolute left-4 md:left-1/2 -translate-x-1/2 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 shadow-md">3</div>
-                    <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right">
-                        <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">2025年6月</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 text-red-600">疾病中枢二次进展，云南省人民医院急性抢救</h4>
-                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">
-                            淋巴瘤细胞跨越血脑屏障爆发中枢神经系统转移。患者在昆明突发昏迷、急性右侧肢体偏瘫、完全表达性失语及严重吞咽困难，送往云南省第一人民医院急诊医学科抢救（住院号#0100001379）。脑高级 MRI/DTI 证实左侧额顶叶及胼胝体形成广泛软组织占位（最大 2.5 × 4.2 × 4.0 cm），中枢白质纤维束遭到恶性肿瘤完全破坏。
+                    <div class="w-full md:w-1/2 pl-12 md:pl-0 md:pr-12 md:text-right text-sm">
+                        <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">June 2025</span>
+                        <h4 class="text-base font-bold text-red-600 mt-1">
+                            <span class="lang-en">CNS Relapse & Emergency Resuscitation</span>
+                            <span class="lang-zh lang-hidden">疾病中枢二次进展，云南省人民医院急性抢救</span>
+                        </h4>
+                        <p class="text-gray-600 mt-2 leading-relaxed text-xs md:text-sm">
+                            <span class="lang-en">Lymphoma cells breached the blood-brain barrier. The patient suffered a sudden coma, acute hemiparesis, and global expressive aphasia. Rushed to Yunnan Provincial People's Hospital (Inpatient #0100001379). Advanced Brain MRI/DTI verified multi-focal soft-tissue masses (max 2.5 × 4.2 × 4.0 cm) heavily destroying central white matter tracts.</span>
+                            <span class="lang-zh lang-hidden">淋巴瘤细胞跨越血脑屏障爆发中枢神经系统转移。患者在昆明突发昏迷、急性右侧肢体偏瘫、完全表达性失语及严重吞咽困难，送往云南省第一人民医院急诊医学科抢救（住院号#0100001379）。脑高级 MRI/DTI 证实左侧额顶叶及胼胝体形成广泛软组织占位（最大 $2.5 \times 4.2 \times 4.0\text{ cm}$），中枢白质纤维束遭到恶性肿瘤完全破坏。</span>
                         </p>
                     </div>
                     <div class="hidden md:block w-1/2"></div>
                 </div>
 
                 <!-- 阶段 4 -->
-                <div class="relative flex flex-col md:flex-row items-start mb-12 group">
+                <div class="relative flex flex-col md:flex-row items-start mb-12">
                     <div class="absolute left-4 md:left-1/2 -translate-x-1/2 bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold z-10 shadow-md"><i class="text-xs fa-solid fa-skull-crossbones"></i></div>
                     <div class="hidden md:block w-1/2"></div>
-                    <div class="w-full md:w-1/2 pl-12 md:pl-12">
-                        <span class="bg-red-700 text-white text-xs font-bold px-2 py-0.5 rounded animate-pulse">2025年7月 – 2026年7月</span>
-                        <h4 class="text-lg font-black text-red-700 mt-1">灾难性财务崩溃与全盘放弃核心挽救方案</h4>
-                        <p class="text-sm text-gray-700 mt-2 font-medium bg-red-50 border border-red-200 rounded-xl p-4 leading-relaxed shadow-xs">
-                            🚨 <strong>迫停放疗事实</strong>：2025年07月10日开启全脑放疗（WBRT），在进行了仅3次后，因全家信用卡额度全盘爆满、再无任何资金，家属被迫违背医嘱于7月16日办理自动出院，<strong>完全放弃了剩余12次全脑放疗</strong>。<br><br>
-                            ⚠️ <strong>放弃根治机会</strong>：医生强烈建议的、能带来长期生存希望的<strong>造血干细胞移植治疗</strong>以及预估费用高达20万美元的 <strong>CAR-T 细胞免疫治疗方案</strong>，也完全因海外合法积蓄被美国法院刑事扣押、国内彻底无钱支付而被迫全盘放弃。目前全家资产为 0，只能通过极其无奈的非传统低成本替代药物勉强维持生命体征，随时面临中枢肿瘤进展导致猝死的极端风险。
-                        </p>
+                    <div class="w-full md:w-1/2 pl-12 md:pl-12 text-sm">
+                        <span class="bg-red-700 text-white text-xs font-bold px-2 py-0.5 rounded animate-pulse">July 2025 – July 2026</span>
+                        <h4 class="text-base font-black text-red-700 mt-1">
+                            <span class="lang-en">Total Abandonment of Core Medical Regimens Due to Frozen Assets</span>
+                            <span class="lang-zh lang-hidden">灾难性财务崩溃与全盘放弃核心挽救方案</span>
+                        </h4>
+                        <div class="text-gray-700 mt-2 font-medium bg-red-50 border border-red-200 rounded-xl p-4 leading-relaxed text-xs md:text-sm shadow-xs">
+                            <div class="lang-en">
+                                🚨 <strong>Abrupt Radiation Termination:</strong> Palliative whole-brain radiation (WBRT) commenced on July 10, 2025. After receiving only 3 fractions, all credit lines were completely exhausted. On July 16, 2025, the family was forced to sign an automatic discharge against medical advice, completely abandoning the remaining 12 fractions.<br><br>
+                                ⚠️ <strong>Rejection of Curative Care:</strong> The life-saving Stem Cell Transplantation and the $200,000 USD CAR-T cell therapy were completely abandoned from the outset due to immediate credit denial and total asset freezing by the U.S. court. Currently, the family bank balance stands at $0 USD, relying strictly on ultra-low-cost non-traditional alternatives to sustain basic metabolic survival.
+                            </div>
+                            <div class="lang-zh lang-hidden">
+                                🚨 <strong>迫停放疗事实</strong>：2025年07月10日开启全脑放疗（WBRT），在进行了仅3次后，因全家信用卡额度全盘爆满、再无任何资金，家属被迫违背医嘱于7月16日办理自动出院，<strong>完全放弃了剩余12次全脑放疗</strong>。<br><br>
+                                ⚠️ <strong>放弃根治机会</strong>：医生强烈建议的、能带来长期生存希望的<strong>造血干细胞移植治疗</strong>以及预估费用高达20万美元的 <strong>CAR-T 细胞免疫治疗方案</strong>，也完全因海外合法积蓄被美国法院刑事扣押、国内彻底无钱支付而被迫全盘放弃。目前全家资产为 0，只能通过极其无奈的非传统低成本替代药物勉学维持生命体征，随时面临中枢肿瘤进展导致猝死的极端风险。
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. 财务绝境与机构债务螺旋 -->
+        <!-- 5. 债务明细模块 -->
         <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 mb-12">
             <h2 class="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
-                <i class="fa-solid fa-receipt text-red-600"></i> 经核实的家庭破产状态与机构债务明细
+                <i class="fa-solid fa-receipt text-red-600"></i>
+                <span class="lang-en">Verified Household Insolvency & Institutional Medical Debts</span>
+                <span class="lang-zh lang-hidden">经核实的家庭破产状态与机构债务明细</span>
             </h2>
-            <p class="text-gray-500 text-xs mb-6">自2023年确诊以来，唐学会完全丧失劳动能力，配偶因全天候陪护处于失业状态。为支付前期抢救及化疗费用，全家深陷于"借新债还旧债"的恶性还款螺旋中：</p>
+            <p class="text-gray-500 text-xs mb-6">
+                <span class="lang-en">Since diagnosis, the patient is incapacitated and her spouse remains permanently unemployed due to round-the-clock caretaking duties. Liquid cash assets stand at $0 USD.</span>
+                <span class="lang-zh lang-hidden">自2023年确诊以来，唐学会完全丧失劳动能力，配偶因全天候陪护处于失业状态。全家银行现金资产目前为 $0。为了维持救命，已被迫陷入以下债务螺旋：</span>
+            </p>
             
             <div class="bg-red-50/50 border border-red-100 p-4 rounded-xl text-center mb-6">
-                <span class="text-xs font-bold uppercase text-red-700 tracking-widerblock mb-1">当前月度刚性债务还款支出</span>
-                <div class="text-3xl font-black text-red-600">$7,362 <span class="text-sm font-bold text-gray-500">美元 / 月</span></div>
+                <span class="text-xs font-bold uppercase text-red-700 tracking-wider block mb-1">Mandatory Monthly Debt-Servicing Obligations / 月度刚性债务还款</span>
+                <div class="text-3xl font-black text-red-600">$7,362 <span class="text-sm font-bold text-gray-500">USD / Month</span></div>
             </div>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-sm">
+                <table class="w-full text-left border-collapse text-xs md:text-sm">
                     <thead>
-                        <tr class="bg-gray-100 text-gray-700 uppercase font-bold text-xs border-b border-gray-200">
-                            <th class="p-3 rounded-l-lg">债权金融机构 (账户尾号)</th>
-                            <th class="p-3">债务详情 / 产生的医疗用途</th>
-                            <th class="p-3 rounded-r-lg text-right">待偿还金额 (约折合美元)</th>
+                        <tr class="bg-gray-100 text-gray-700 uppercase font-bold text-[10px] md:text-xs border-b border-gray-200">
+                            <th class="p-3 rounded-l-lg">Lending Institution / 金融机构</th>
+                            <th class="p-3">Debt Logs & Medical Purposes / 产生的医疗用途</th>
+                            <th class="p-3 rounded-r-lg text-right">Outstanding Balance / 待偿金额</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
                         <tr>
-                            <td class="p-3 font-semibold text-slate-900">中国银行 (尾号 9808)</td>
-                            <td class="p-3 text-gray-500">强制性医疗与生活分期付款计划，已陷入严重逾期滞留状态</td>
+                            <td class="p-3 font-semibold text-slate-900">Bank of China (Acc. Ending 9808)</td>
+                            <td class="p-3 text-gray-500">Medical installment structure; in severe delinquency status. / 医疗与生活分期，严重逾期。</td>
                             <td class="p-3 text-right text-red-600 font-bold">$21,432.89 USD</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-slate-900">招商银行 (尾号 0586 / 3835)</td>
-                            <td class="p-3 text-gray-500">长期未结清的机构个人医疗信用本金总额</td>
-                            <td class="p-3 text-right text-red-600 font-bold">约 $16,911.00 USD</td>
+                            <td class="p-3 font-semibold text-slate-900">China Merchants Bank (Ending 0586 / 3835)</td>
+                            <td class="p-3 text-gray-500">Unsecured long-term institutional personal medical credit balance. / 个人医疗信用贷款。</td>
+                            <td class="p-3 text-right text-red-600 font-bold">~ $16,911.00 USD</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-slate-900">上海浦东发展银行 (尾号 1625)</td>
-                            <td class="p-3 text-gray-500">垫付突发昏迷紧急抢救与前3次全脑放疗产生的单月飙升账单</td>
+                            <td class="p-3 font-semibold text-slate-900">SPDB Bank (Acc. Ending 1625)</td>
+                            <td class="p-3 text-gray-500">Single-month bill spike caused by emergency ICU admission and WBRT. / 急诊抢救与放疗产生的瞬间飙升账单。</td>
                             <td class="p-3 text-right text-red-600 font-bold">$3,772.50 USD</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-slate-900">上海银行 (尾号 8011 / 9826)</td>
-                            <td class="p-3 text-gray-500">长期刚性医疗支出分期结构，每月固定滚动产生的强制还款</td>
-                            <td class="p-3 text-right text-red-600 font-bold">$595.07 USD / 月</td>
+                            <td class="p-3 font-semibold text-slate-900">Bank of Shanghai (Ending 8011 / 9826)</td>
+                            <td class="p-3 text-gray-500">Fixed recurring monthly debt servicing for historical oncology bills. / 长期固定滚动的医疗分期还款。</td>
+                            <td class="p-3 text-right text-red-600 font-bold">$595.07 USD / mo</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-slate-900">二级附属卡 (中信4545 / 交通5618 / 平安1374)</td>
-                            <td class="p-3 text-gray-500">日常低成本维持药物采购，信用额度已彻底透支爆满（呈负资产形态）</td>
-                            <td class="p-3 text-right text-red-600 font-bold">额度全面爆满</td>
+                            <td class="p-3 font-semibold text-slate-900">Subsidiary Credit Overdrafts</td>
+                            <td class="p-3 text-gray-500">CITIC 4545, BoCom 5618, PingAn 1374; all secondary lines completely maximized. / 购买维持生存药物，额度全盘爆满。</td>
+                            <td class="p-3 text-right text-red-600 font-bold">CRITICALLY MAXED</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="mt-6 bg-slate-900 text-white p-5 rounded-xl text-xs md:text-sm leading-relaxed border-l-4 border-red-500">
-                💡 <strong>导致全盘放弃核心医疗方案的根本原因</strong>：其家庭合法投资于海外 G-Series 项目的个人清白生命储蓄共计 <strong>$229,309.00 美元</strong>，因刑事没收案遭到美国法院完全扣押并封锁，长达9个月的行政审查滞后直接切断了其唯一的医疗资金来源。该事实已随法院 863 号卷宗存卷备查。
+                <span class="lang-en">💡 <strong>Root Cause of Medical Abandonment:</strong> The family's legitimate personal savings ($229,309.00 USD) invested in overseas G-Series entities were swept and frozen indefinitely by the U.S. court during criminal asset forfeitures. The total deprivation of this untainted capital cut off the family’s sole means of funding care, a catastrophic fact documented in Court Document No. 863.</span>
+                <span class="lang-zh lang-hidden">💡 <strong>导致全盘放弃核心医疗方案的根本原因</strong>：其家庭合法投资于海外 G-Series 项目的个人清白生命储蓄共计 <strong>$229,309.00 美元</strong>，因刑事没收案遭到美国法院完全扣押并封锁，长达9个月的行政审查滞后直接切断了其唯一的医疗资金来源。该事实已随法院 863 号卷宗存卷备查。</span>
             </div>
         </section>
 
@@ -234,22 +291,24 @@
         <section id="evidence-text" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
             <div class="bg-slate-900 p-6 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h3 class="text-lg font-black tracking-tight">紧急人道主义解冻与医疗拨流动议书全文</h3>
-                    <p class="text-xs text-slate-400 mt-0.5">EMERGENCY MOTION FOR IMMEDIATE DISBURSEMENT ON HUMANITARIAN GROUNDS</p>
+                    <h3 class="text-base md:text-lg font-black tracking-tight">
+                        <span class="lang-en">Emergency Motion for Humanitarian Release of Funds Text</span>
+                        <span class="lang-zh lang-hidden">紧急人道主义解冻与医疗拨流动议书全文</span>
+                    </h3>
+                    <p class="text-[10px] text-slate-400 mt-0.5">OFFICIAL LEGAL FILING CORRELATION (DOCKET NO. 863)</p>
                 </div>
-                <button onclick="navigator.clipboard.writeText(document.getElementById('motion-text-en').innerText); alert('英文动议全文已成功复制到剪贴板！');" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all shadow-sm cursor-pointer flex items-center gap-1.5">
-                    <i class="fa-solid fa-copy"></i> 一键复制英文原件
+                <button onclick="navigator.clipboard.writeText(document.getElementById('motion-text-en').innerText); alert('The English motion filing text has been copied to your clipboard!');" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all shadow-sm cursor-pointer flex items-center gap-1.5">
+                    <i class="fa-solid fa-copy"></i> Copy English Original
                 </button>
             </div>
             
             <div class="p-6 max-h-96 overflow-y-scroll bg-slate-50 border-b border-gray-100 text-xs md:text-sm font-mono text-gray-800 leading-relaxed space-y-6" id="motion-text-en">
-                <!-- 动议英文原件，方便法官直接提取 -->
                 <p class="font-bold">TO: GTV Media Group Fair Fund Administrator (info@GTVMediaGroupFairFund.com)<br>
                 ATTN: Fund Administrator VZ<br>
                 CC: Ryan Finkel, Assistant United States Attorney (DOJ) (ryan.finkel@usdoj.gov); USDOJ SDNY GTV Victims Coordinator; Pro Se Intake Office, U.S. District Court for SDNY</p>
                 
                 <p class="font-bold border-b border-gray-200 pb-2">CASE REFERENCE: United States v. Kwok, et al. (Case No. 1:23-cr-00118-1-AT, SDNY)<br>
-                OFFICIAL COURT RECORD: [Judicial Docket File No. 863] (Filed: July 10, 2026)<br>
+                OFFICIAL COURT RECORD: [Judicial Docket File No. 863] (Filed/Uploaded: July 10, 2026)<br>
                 GTV FAIR FUND UNIQUE REFERENCE CODE: D6GUYDEQZL</p>
 
                 <p class="font-bold text-slate-900 uppercase">I. PREAMBLE & NOTICE OF LIFE-THREATENING EMERGENCY</p>
@@ -258,44 +317,45 @@
 
                 <p class="font-bold text-slate-900 uppercase">II. COMPREHENSIVE CLINICAL URGENCY & FORCED CARE TERMINATION</p>
                 <p>Primary Clinical Diagnosis: Diffuse Large B-Cell Lymphoma (DLBCL) with extensive, highly aggressive Secondary Central Nervous System (CNS) Metastasis. As documented in the attached neuroimaging protocols (MRI and DTI), a dominant tumor mass measuring 2.5 cm × 4.2 cm × 4.0 cm has severely destroyed the central white matter fiber tracts in the left frontal/parietal lobes and the corpus callosum. This has induced profound vasogenic edema, narrowing of the left lateral ventricle, a critical rightward midline shift, global expressive aphasia, and functional right-sided hemiparesis (GCS motor grade 4/5-).</p>
-                <p>Forced Medical Abandonment: Following emergency resuscitation at the First People's Hospital of Yunnan Province, the patient was prescribed a 15-fraction Palliative Whole-Brain Radiotherapy (WBRT) sequence. Due to our capital being entirely withheld, our domestic credit lines collapsed. On July 16, 2025, after receiving only 3 fractions of radiation, the patient was forcibly discharged against medical advice due to a total inability to pay. The life-saving $200,000 USD CAR-T regimen has been completely abandoned at the outset.</p>
+                <p>Forced Medical Abandonment: Following emergency resuscitation at the First People’s Hospital of Yunnan Province, the patient was prescribed a 15-fraction Palliative Whole-Brain Radiotherapy (WBRT) sequence. Due to our capital being entirely withheld, our domestic credit lines collapsed. On July 16, 2025, after receiving only 3 fractions of radiation, the patient was forcibly discharged against medical advice due to a total inability to pay. The life-saving $200,000 USD CAR-T regimen has been completely abandoned at the outset.</p>
 
                 <p class="font-bold text-slate-900 uppercase">III. MATTERS OF SPECIFIC RELIEF REQUESTED</p>
                 <p>Given the extreme humanitarian urgency documented in Court Record No. 863, the Claimant respectfully moves the Fund Administrator, in coordination with the U.S. Department of Justice and the SEC Office of the Investor Advocate, to execute the following Expedited Special Actions:</p>
-                <ul class="list-disc pl-5 space-y-1">
+                <ul class="list-disc pl-5 space-y-2">
                     <li><strong>Immediate Hardship Escalation:</strong> Grant an extraordinary Administrative Hardship Exception to bypass standard distribution batch sequencing.</li>
-                    <li><strong>Restricted Special Disbursement / Escrow Funding:</strong> If the Fund Administrator is technically constrained from releasing the full $229,309.00 USD directly to a retail banking account, we request an immediate Restricted Emergency Medical Remittance of $50,000.00 USD wired directly to a designated medical escrow account or directly to the institutional health provider to instantly resume the remaining 12 fractions of Whole-Brain Radiotherapy.</li>
+                    <li><strong>Restricted Special Disbursement / Escrow Funding:</strong> If the Fund Administrator is technically constrained from releasing the full $229,309.00 USD directly to a retail banking account, we request an immediate Restricted Emergency Medical Remittance of $50,000.00 USD wired directly to a designated medical escrow account or directly to the institutional health provider to instantly resume the remaining 12 fractions of Whole-Brain Radiotherapy and initiate emergency CNS salvage care.</li>
                 </ul>
-                <p class="border-t border-gray-200 pt-4 text-[11px] text-gray-500">I, Jun Zhou, hereby declare under penalty of perjury under the laws of the United States of America that the foregoing clinical history, institutional debt logs, and medical crisis details are true and accurate. Date of Execution: July 19, 2026.</p>
+                <p class="border-t border-gray-200 pt-4 text-[11px] text-gray-500">I, Jun Zhou, hereby declare under penalty of perjury under the laws of the United States of America that the foregoing clinical history, institutional debt logs, and medical crisis details are true, accurate, and consistent with the sworn filings entered into the judicial record under Document 863 in the Southern District of New York. Date of Execution: July 19, 2026.</p>
             </div>
             <div class="p-4 bg-gray-100 text-center text-xs font-semibold text-gray-600">
-                <i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> 鼠标滚动可查看完整 3 个模块的英文陈情信原件
+                <i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> Scroll down inside the block to read the complete English legal motion.
             </div>
         </section>
 
     </main>
 
-    <!-- 7. 底部：真实验证与联络渠道 -->
+    <!-- 7. 页脚与宣誓声明 -->
     <footer class="bg-slate-900 text-slate-400 py-12 px-4 border-t-4 border-red-600">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <div class="text-sm font-medium max-w-2xl mx-auto text-slate-300">
-                "贵方行政程序每多拖延一天，都在事实上无情地剥夺和缩短我妻子仅存的生命。我恳求立刻予以人道主义的、最高级别的加急特批介入。"
+        <div class="max-w-4xl mx-auto text-center space-y-6 text-xs md:text-sm">
+            <div class="font-medium max-w-2xl mx-auto text-slate-300">
+                <span class="lang-en">"Every single day of continued administrative delay actively truncates my wife's remaining lifespan. I implore your immediate, compassionate, and expedited intervention."</span>
+                <span class="lang-zh lang-hidden">“贵方行政程序每多拖延一天，都在事实上无情地剥夺和缩短我妻子仅存的生命。我恳求立刻予以人道主义的、最高级别的加急特批介入。”</span>
             </div>
             
             <hr class="border-slate-800 max-w-xs mx-auto">
             
-            <!-- 真实性誓言声明 -->
-            <div class="text-[11px] text-slate-500 max-w-xl mx-auto leading-relaxed">
-                <strong>宣誓与主张声明</strong>：我，周俊（Jun Zhou），在此谨根据美利坚合众国法律，在承担伪证罪法律后果的前提下郑重声明：上述陈述的临床病史、机构债务明细以及医疗危机实况均真实、准确无误，且与向美国纽约南区联邦地方法院依法提交并存卷的第 863 号官方司法文件中的宣誓陈述严格一致。
+            <div class="text-[10px] md:text-[11px] text-slate-500 max-w-xl mx-auto leading-relaxed">
+                <span class="lang-en"><strong>Declaration under Penalty of Perjury:</strong> I, Jun Zhou, hereby declare under penalty of perjury under the laws of the United States of America that the foregoing clinical history, institutional debt logs, and medical crisis details are true, accurate, and consistent with the sworn filings entered into the official judicial record under File No. 863.</span>
+                <span class="lang-zh lang-hidden"><strong>宣誓与主张声明</strong>：我，周俊（Jun Zhou），在此谨根据美利坚合众国法律，在承担伪证罪法律后果的前提下郑重声明：上述陈述的临床病史、机构债务明细以及医疗危机实况均真实、准确无误，且与向美国纽约南区联邦地方法院依法提交并存卷的第 863 号官方司法文件中的宣誓陈述严格一致。</span>
             </div>
 
             <!-- 紧急联络入口 -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 pt-4 text-sm font-semibold text-white">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 pt-4 text-white font-semibold">
                 <a href="tel:+8613816379321" class="hover:text-red-400 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-phone text-red-500 text-base"></i> 紧急电话：+86-13816379321
+                    <i class="fa-solid fa-phone text-red-500 text-base"></i> TEL: +86-13816379321
                 </a>
                 <a href="mailto:rolfoundation2019@gmail.com" class="hover:text-blue-400 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-envelope text-blue-400 text-base"></i> 首要邮箱：rolfoundation2019@gmail.com
+                    <i class="fa-solid fa-envelope text-blue-400 text-base"></i> EMAIL: rolfoundation2019@gmail.com
                 </a>
             </div>
             
@@ -303,5 +363,32 @@
         </div>
     </footer>
 
+    <!-- 8. 简易语言切换控制 JavaScript 逻辑 -->
+    <script>
+        function switchLang(lang) {
+            const elementsEn = document.querySelectorAll('.lang-en');
+            const elementsZh = document.querySelectorAll('.lang-zh');
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+
+            if (lang === 'zh') {
+                // 显示中文，隐藏英文
+                elementsEn.forEach(el => el.classList.add('lang-hidden'));
+                elementsZh.forEach(el => el.classList.remove('lang-hidden'));
+                // 切换顶部控制钮样式
+                btnZh.className = "px-2.5 py-1 rounded text-xs font-black transition-all bg-white text-red-700 shadow-xs cursor-pointer";
+                btnEn.className = "px-2.5 py-1 rounded text-xs font-bold transition-all text-white hover:bg-white/10 cursor-pointer";
+                document.documentElement.lang = "zh-CN";
+            } else {
+                // 显示英文，隐藏中文
+                elementsEn.forEach(el => el.classList.remove('lang-hidden'));
+                elementsZh.forEach(el => el.classList.add('lang-hidden'));
+                // 切换顶部控制钮样式
+                btnEn.className = "px-2.5 py-1 rounded text-xs font-black transition-all bg-white text-red-700 shadow-xs cursor-pointer";
+                btnZh.className = "px-2.5 py-1 rounded text-xs font-bold transition-all text-white hover:bg-white/10 cursor-pointer";
+                document.documentElement.lang = "en";
+            }
+        }
+    </script>
 </body>
 </html>
