@@ -62,7 +62,7 @@ https://xima020laya.github.io/index.html/
 
 ## 📞 紧急联系方式 | Emergency Contact
 
-- **电话**: +86-13816379321
+- **电话**: +86-19327016484
 - **邮箱**: rolfoundation2019@gmail.com  
 - **GTV 代码**: D6GUYDEQZL
 
