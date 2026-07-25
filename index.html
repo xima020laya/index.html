@@ -3,112 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>紧急人道主义呼吁 | 医疗救助项目</title>
+  <title>紧急人道主义呼吁 | 紧急医疗救助基金</title>
   <style>
     :root {
-      --primary-color: #d9534f;
-      --secondary-color: #f0ad4e;
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #333333;
+      --bg-dark: #0b0f19;
+      --card-bg: #111827;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary-red: #ef4444;
+      --primary-red-hover: #dc2626;
+      --accent-orange: #f59e0b;
+      --text-main: #f9fafb;
+      --text-sub: #9ca3af;
+      --accent-blue: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
     }
 
-    .container {
-      max-width: 800px;
-      width: 100%;
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      padding: 30px;
-      box-sizing: border-box;
-    }
-
-    /* === 融合整体风格的图片卡片处理 === */
-    .featured-image-container {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0;
-      perspective: 1000px;
-    }
-
-    .styled-image-card {
-      position: relative;
-      background: #ffffff;
-      padding: 12px 12px 24px 12px;
-      border-radius: 8px;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
-      transform: rotate(-1.5deg);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      max-width: 360px;
-      width: 100%;
-    }
-
-    .styled-image-card:hover {
-      transform: rotate(0deg) scale(1.02);
-      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-    }
-
-    .image-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      aspect-ratio: 3 / 4;
-    }
-
-    .styled-image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(1.05) contrast(1.02);
-    }
-
-    /* 微妙的暗角叠加层，增强氛围感 */
-    .image-wrapper::after {
-      content: "";
-      position: absolute;
+    /* 顶部导航 */
+    header {
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
-      pointer-events: none;
+      z-index: 100;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .image-caption {
-      margin-top: 12px;
-      text-align: center;
+    .header-tag {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--primary-red);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-right: 12px;
+    }
+
+    .case-title {
       font-size: 0.9rem;
-      color: #666;
-      font-weight: 500;
+      color: var(--text-sub);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-donate {
+      background: var(--primary-red);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn-donate:hover {
+      background: var(--primary-red-hover);
+    }
+
+    /* 主内容布局 */
+    .main-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Hero 头部区间 */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .badge-emergency {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--primary-red);
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero p.subtitle {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 进度条卡片 */
+    .progress-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 30px 0 50px 0;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .progress-bar-bg {
+      background: #1f2937;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--accent-orange), var(--primary-red));
+      height: 100%;
+      width: 22%; /* 对应 5万/22.9万 比例 */
+      border-radius: 6px;
+    }
+
+    .progress-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    /* 网格布局 */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .info-item label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .info-item span {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* 证据与图片渲染样式 */
+    .image-evidence-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .evidence-image-frame {
+      position: relative;
+      background: #1f2937;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .evidence-image-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      filter: contrast(1.03) brightness(0.95);
+    }
+
+    .evidence-caption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    .sidebar-card {
+      background: linear-gradient(145deg, #1f2937, #111827);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-action {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--primary-red);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 16px;
+      transition: background 0.2s;
+    }
+
+    .btn-action:hover {
+      background: var(--primary-red-hover);
+    }
+
+    .tag-verified {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: auto;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2 style="text-align: center; color: var(--primary-color);">现场记录与影像</h2>
+  <!-- 顶部导航 -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <span class="header-tag">紧急动议</span>
+      <span class="case-title">纽约南区联邦地区法院案件编号：1:23-cr-00118-1-AT</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#timeline">时间线</a>
+      <a href="#evidence">证据与影像</a>
+      <a href="#donate" class="btn-donate">立即捐款</a>
+    </nav>
+  </header>
 
-    <!-- 处理好的图片模块 -->
-    <div class="featured-image-container">
-      <div class="styled-image-card">
-        <div class="image-wrapper">
-          <img src="https://lh3.googleusercontent.com/d/1vgSJVpCHxuvZwFaAjImM-cM62CSyUX1b" alt="活动现场救助记录" />
-        </div>
-        <div class="image-caption">现场影像记录</div>
+  <div class="main-container">
+    <!-- Hero 主视觉区 -->
+    <section class="hero">
+      <div class="badge-emergency">
+        ⚠️ 人道主义紧急呼吁 —— 文件编号 863
       </div>
+      <h1>紧急医疗救助呼吁，求助唐女士</h1>
+      <p class="subtitle">
+        正式人道主义请愿书，请求美国地方法院（SDNY）紧急行政困难豁免，以解冻用于挽救生命的晚期癌症治疗的法定储蓄。
+      </p>
+
+      <!-- 资金筹集进度 -->
+      <div class="progress-card">
+        <div class="progress-header">
+          <span>所需医疗资本目标</span>
+          <span style="color: var(--accent-orange);">229,309.00 美元</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <div class="progress-footer">
+          <span>急需 5 万美元，用于剩余的 12 次 WBRT 疗程</span>
+          <span style="color: var(--primary-red);">获救率达 15%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 详细内容与侧边栏网格 -->
+    <div class="content-grid">
+      <!-- 左侧主内容区 -->
+      <div class="main-content">
+        
+        <!-- 司法案件坐标卡片 -->
+        <div class="card">
+          <div class="card-title">
+            ⚖️ 司法案件坐标
+            <span class="tag-verified">通过 PACER 公开验证</span>
+          </div>
+          <div class="info-list">
+            <div class="info-item">
+              <label>法院</label>
+              <span>美国纽约南区地方法院</span>
+            </div>
+            <div class="info-item">
+              <label>案件名称</label>
+              <span>美国诉郭等人</span>
+            </div>
+            <div class="info-item">
+              <label>案件编号</label>
+              <span>1:23-cr-00118-1-AT</span>
+            </div>
+            <div class="info-item">
+              <label>审判长</label>
+              <span>Hon. 阿娜丽莎·托雷斯</span>
+            </div>
+            <div class="info-item">
+              <label>正式备案</label>
+              <span>案卷编号 863 (2026年7月10日)</span>
+            </div>
+            <div class="info-item">
+              <label>SEC GTV 公平基金参考号</label>
+              <span>D6GUYDEQZL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 融合图片与证据区 -->
+        <div class="card" id="evidence">
+          <div class="card-title">
+            📄 证明材料与影像记录
+          </div>
+          <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 16px;">
+            以下为提交给法院的人道主义豁免申请材料及医疗诊疗相关现场影像记录：
+          </p>
+          
+          <!-- 绕过预览直接渲染的图片 -->
+          <div class="image-evidence-container">
+            <div class="evidence-image-frame">
+              <img src="https://lh3.googleusercontent.com/d/1vgSJVpCHxuvZwFaAjImM-cM62CSyUX1b" alt="医疗救助请愿书与证明文件" />
+            </div>
+            <div class="evidence-caption">
+              图 1：提交至 SDNY 法院的请愿书附带紧急医疗凭证与现场材料记录
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右侧行动侧边栏 -->
+      <div class="sidebar">
+        <div class="card sidebar-card" id="donate">
+          <div class="card-title" style="color: var(--primary-red);">
+            ❤️ 直接救济行动
+          </div>
+          <p style="font-size: 0.9rem; color: #d1d5db; margin-bottom: 16px;">
+            我们请求立即向治疗医疗机构或托管账户直接汇款 <strong>50,000.00 美元</strong>，以恢复剩余的 12 次 WBRT 放射治疗。
+          </p>
+          <a href="#" class="btn-action">💰 通过众筹活动捐款</a>
+          <a href="#" class="btn-action" style="background: transparent; border: 1px solid var(--card-border); margin-top: 10px;">🏦 查看受保护的托管/验证信息</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
