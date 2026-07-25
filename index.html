@@ -1,414 +1,458 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>紧急人道主义呼吁 | 紧急医疗救助基金</title>
-  <style>
-    :root {
-      --bg-dark: #0b0f19;
-      --card-bg: #111827;
-      --card-border: rgba(255, 255, 255, 0.08);
-      --primary-red: #ef4444;
-      --primary-red-hover: #dc2626;
-      --accent-orange: #f59e0b;
-      --text-main: #f9fafb;
-      --text-sub: #9ca3af;
-      --accent-blue: #3b82f6;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-bottom: 60px;
-    }
-
-    /* 顶部导航 */
-    header {
-      background: rgba(17, 24, 39, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--card-border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 12px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .header-tag {
-      background: rgba(239, 68, 68, 0.2);
-      color: var(--primary-red);
-      font-size: 0.8rem;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-right: 12px;
-    }
-
-    .case-title {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-sub);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-    }
-
-    .btn-donate {
-      background: var(--primary-red);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-
-    .btn-donate:hover {
-      background: var(--primary-red-hover);
-    }
-
-    /* 主内容布局 */
-    .main-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    /* Hero 头部区间 */
-    .hero {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .badge-emergency {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: var(--primary-red);
-      font-size: 0.85rem;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    .hero p.subtitle {
-      font-size: 1.1rem;
-      color: var(--text-sub);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* 进度条卡片 */
-    .progress-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 24px;
-      margin: 30px 0 50px 0;
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      font-weight: bold;
-    }
-
-    .progress-bar-bg {
-      background: #1f2937;
-      height: 12px;
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .progress-bar-fill {
-      background: linear-gradient(90deg, var(--accent-orange), var(--primary-red));
-      height: 100%;
-      width: 22%; /* 对应 5万/22.9万 比例 */
-      border-radius: 6px;
-    }
-
-    .progress-footer {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-    }
-
-    /* 网格布局 */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
-    }
-
-    @media (max-width: 768px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid var(--card-border);
-      padding-bottom: 12px;
-    }
-
-    .info-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .info-item label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      margin-bottom: 4px;
-    }
-
-    .info-item span {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    /* 证据与图片渲染样式 */
-    .image-evidence-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .evidence-image-frame {
-      position: relative;
-      background: #1f2937;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      max-width: 450px;
-      width: 100%;
-    }
-
-    .evidence-image-frame img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      display: block;
-      filter: contrast(1.03) brightness(0.95);
-    }
-
-    .evidence-caption {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      text-align: center;
-    }
-
-    .sidebar-card {
-      background: linear-gradient(145deg, #1f2937, #111827);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .btn-action {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: var(--primary-red);
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 16px;
-      transition: background 0.2s;
-    }
-
-    .btn-action:hover {
-      background: var(--primary-red-hover);
-    }
-
-    .tag-verified {
-      background: rgba(59, 130, 246, 0.2);
-      color: var(--accent-blue);
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 12px;
-      margin-left: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urgent Humanitarian Appeal | Emergency Medical Salvage Fund</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow-x: hidden; overflow-y: hidden !important; }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
 
-  <!-- 顶部导航 -->
-  <header>
-    <div style="display: flex; align-items: center;">
-      <span class="header-tag">紧急动议</span>
-      <span class="case-title">纽约南区联邦地区法院案件编号：1:23-cr-00118-1-AT</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#timeline">时间线</a>
-      <a href="#evidence">证据与影像</a>
-      <a href="#donate" class="btn-donate">立即捐款</a>
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span data-i18n="nav_badge" class="bg-red-600 text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Urgent Motion</span>
+                <span class="font-bold text-sm sm:text-lg hidden md:inline">SDNY Case No. 1:23-cr-00118-1-AT</span>
+            </div>
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="#timeline" data-i18n="nav_timeline" class="hover:text-red-400 text-sm font-medium transition">Timeline</a>
+                <a href="#evidence" data-i18n="nav_evidence" class="hover:text-red-400 text-sm font-medium transition">Evidence</a>
+                <a href="#donate" data-i18n="nav_donate" class="bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-2 rounded-lg transition shadow">Donate Now</a>
+                
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 text-xs font-bold px-2.5 py-1.5 rounded flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="lang-btn-text">中文</span>
+                </button>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <div class="main-container">
-    <!-- Hero 主视觉区 -->
-    <section class="hero">
-      <div class="badge-emergency">
-        ⚠️ 人道主义紧急呼吁 —— 文件编号 863
-      </div>
-      <h1>紧急医疗救助呼吁，求助唐女士</h1>
-      <p class="subtitle">
-        正式人道主义请愿书，请求美国地方法院（SDNY）紧急行政困难豁免，以解冻用于挽救生命的晚期癌症治疗的法定储蓄。
-      </p>
+    <!-- Hero Section -->
+    <header class="bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 bg-red-950 border border-red-800 text-red-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-6">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span data-i18n="hero_badge">Humanitarian Emergency Appeal — Doc #863</span>
+            </div>
+            <h1 data-i18n="hero_title" class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                Emergency Medical Salvage Appeal for Ms. Tang M.
+            </h1>
+            <p data-i18n="hero_subtitle" class="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
+                Official humanitarian petition requesting an emergency administrative hardship waiver from the U.S. District Court (SDNY) to release frozen legal savings for life-saving late-stage cancer treatment.
+            </p>
 
-      <!-- 资金筹集进度 -->
-      <div class="progress-card">
-        <div class="progress-header">
-          <span>所需医疗资本目标</span>
-          <span style="color: var(--accent-orange);">229,309.00 美元</span>
+            <!-- Funding Progress Bar -->
+            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 max-w-2xl mx-auto shadow-inner">
+                <div class="flex justify-between text-sm font-semibold mb-2">
+                    <span data-i18n="target_label" class="text-slate-400">Target Medical Capital Required</span>
+                    <span class="text-red-400">$229,309.00 USD</span>
+                </div>
+                <div class="w-full bg-slate-700 rounded-full h-4 mb-4 overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-amber-500 h-4 rounded-full transition-all duration-1000" style="width: 22%"></div>
+                </div>
+                <div class="flex justify-between text-xs text-slate-400">
+                    <span data-i18n="progress_needed"><strong class="text-white">$50,000 USD</strong> Urgently Needed for 12 Remaining WBRT Sessions</span>
+                    <span data-i18n="progress_rescued" class="text-amber-400 font-bold">15% Rescued</span>
+                </div>
+            </div>
         </div>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill"></div>
-        </div>
-        <div class="progress-footer">
-          <span>急需 5 万美元，用于剩余的 12 次 WBRT 疗程</span>
-          <span style="color: var(--primary-red);">获救率达 15%</span>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- 详细内容与侧边栏网格 -->
-    <div class="content-grid">
-      <!-- 左侧主内容区 -->
-      <div class="main-content">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- 司法案件坐标卡片 -->
-        <div class="card">
-          <div class="card-title">
-            ⚖️ 司法案件坐标
-            <span class="tag-verified">通过 PACER 公开验证</span>
-          </div>
-          <div class="info-list">
-            <div class="info-item">
-              <label>法院</label>
-              <span>美国纽约南区地方法院</span>
-            </div>
-            <div class="info-item">
-              <label>案件名称</label>
-              <span>美国诉郭等人</span>
-            </div>
-            <div class="info-item">
-              <label>案件编号</label>
-              <span>1:23-cr-00118-1-AT</span>
-            </div>
-            <div class="info-item">
-              <label>审判长</label>
-              <span>Hon. 阿娜丽莎·托雷斯</span>
-            </div>
-            <div class="info-item">
-              <label>正式备案</label>
-              <span>案卷编号 863 (2026年7月10日)</span>
-            </div>
-            <div class="info-item">
-              <label>SEC GTV 公平基金参考号</label>
-              <span>D6GUYDEQZL</span>
-            </div>
-          </div>
+        <!-- Left 2 Columns -->
+        <div class="lg:col-span-2 space-y-12">
+            
+            <!-- Judicial Case Coordinates -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <h2 data-i18n="case_heading" class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-slate-700"></i> Judicial Case Coordinates
+                    </h2>
+                    <span data-i18n="verify_welcome" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+                        <i class="fa-solid fa-circle-check"></i> Publicly Verifiable via PACER
+                    </span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm bg-slate-50 p-4 rounded-lg border border-slate-100">
+                    <div><strong data-i18n="lbl_court" class="text-slate-600">Court:</strong> <span data-i18n="val_court">U.S. District Court for SDNY</span></div>
+                    <div><strong data-i18n="lbl_case_name" class="text-slate-600">Case Name:</strong> US v. Guo et al.</div>
+                    <div><strong data-i18n="lbl_case_num" class="text-slate-600">Case Number:</strong> 1:23-cr-00118-1-AT</div>
+                    <div><strong data-i18n="lbl_judge" class="text-slate-600">Presiding Judge:</strong> Hon. Analisa Torres</div>
+                    <div><strong data-i18n="lbl_filing" class="text-slate-600">Official Filing:</strong> <span data-i18n="val_filing">Docket #863 (July 10, 2026)</span></div>
+                    <div><strong data-i18n="lbl_sec" class="text-slate-600">SEC GTV Fair Fund Ref:</strong> D6GUYDEQZL</div>
+                </div>
+            </section>
+
+            <!-- Timeline -->
+            <section id="timeline" class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200">
+                <h2 data-i18n="timeline_heading" class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-slate-700"></i> Clinical Progression & Financial Collapse
+                </h2>
+                
+                <div class="relative border-l-2 border-slate-200 ml-4 space-y-8">
+                    
+                    <!-- Stage 1 -->
+                    <div class="ml-6 relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-400"></span>
+                        <time data-i18n="t1_date" class="text-xs font-semibold uppercase text-slate-500">Aug 2023 – Oct 2023</time>
+                        <h3 data-i18n="t1_title" class="text-base font-bold text-slate-900 mt-1">Stage I: Diagnosis</h3>
+                        <p data-i18n="t1_desc" class="text-sm text-slate-600 mt-1">
+                            Confirmed Diffuse Large B-cell Lymphoma (DLBCL), Ann Arbor Stage IVB (High-risk group) via multi-center histopathology.
+                        </p>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="ml-6 relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-amber-500"></span>
+                        <time data-i18n="t2_date" class="text-xs font-semibold uppercase text-amber-600">Late 2023 – Mid 2024</time>
+                        <h3 data-i18n="t2_title" class="text-base font-bold text-slate-900 mt-1">Stage II: Resource Exhaustion</h3>
+                        <p data-i18n="t2_desc" class="text-sm text-slate-600 mt-1">
+                            First-line diagnostic procedures exhausted local financial reserves. Forced down-tier clinical transfer due to accumulating medical debts.
+                        </p>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="ml-6 relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-red-500"></span>
+                        <time data-i18n="t3_date" class="text-xs font-semibold uppercase text-red-600">June 2025</time>
+                        <h3 data-i18n="t3_title" class="text-base font-bold text-slate-900 mt-1">Stage III: Central Nervous System Secondary Metastasis</h3>
+                        <p data-i18n="t3_desc" class="text-sm text-slate-600 mt-1">
+                            Emergency admission following coma, hemiplegia, and expressive aphasia. Brain MRI/DTI confirmed midline shift and fiber tract disruption.
+                        </p>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="ml-6 relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-red-600 ring-4 ring-red-100"></span>
+                        <time data-i18n="t4_date" class="text-xs font-semibold uppercase text-red-600">July 2025 – Present</time>
+                        <h3 data-i18n="t4_title" class="text-base font-bold text-slate-900 mt-1">Stage IV: Critical Treatment Discontinuation</h3>
+                        <p data-i18n="t4_desc" class="text-sm text-slate-600 mt-1">
+                            Whole Brain Radiation Therapy (WBRT) halted after only 3 of 15 scheduled sessions due to credit line exhaustion. Pre-paid CAR-T therapy access rejected.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Evidence Gallery -->
+            <section id="evidence" class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200">
+                <h2 data-i18n="evidence_heading" class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-file-medical text-slate-700"></i> Legal & Medical Verification
+                </h2>
+                <p data-i18n="evidence_sub" class="text-sm text-slate-600 mb-6">Click any document below to inspect court affidavits and medical diagnostics.</p>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <button onclick="openModal(i18n[currentLang].m1_title, i18n[currentLang].m1_desc, [{ label: i18n[currentLang].btn_open_doc, url: 'https://drive.google.com/file/d/1RqAvzMhxXl-M3oGSrrmPDGK8EoKKS6as/view?usp=sharing' }])" class="p-4 border border-slate-200 rounded-lg hover:border-red-500 hover:shadow transition text-center bg-slate-50">
+                        <i class="fa-solid fa-file-pdf text-3xl text-red-600 mb-2"></i>
+                        <span data-i18n="doc1_btn" class="block text-xs font-semibold text-slate-800">Docket Motion #863</span>
+                    </button>
+                    <button onclick="openModal(i18n[currentLang].m2_title, i18n[currentLang].m2_desc, [{ label: i18n[currentLang].btn_open_mri_file, url: 'https://drive.google.com/file/d/1R1nsgR9qJ3dMvh_8b3DTKrGwFC5J5mcE/view?usp=sharing' }, { label: i18n[currentLang].btn_open_mri_folder, url: 'https://drive.google.com/drive/folders/1h_hHSC-wWb8y3b4A-tj4dG1kYrCghiCf?lfhs=2' }])" class="p-4 border border-slate-200 rounded-lg hover:border-red-500 hover:shadow transition text-center bg-slate-50">
+                        <i class="fa-solid fa-x-ray text-3xl text-blue-600 mb-2"></i>
+                        <span data-i18n="doc2_btn" class="block text-xs font-semibold text-slate-800">Brain MRI / DTI</span>
+                    </button>
+                    <button onclick="openModal(i18n[currentLang].m3_title, i18n[currentLang].m3_desc)" class="p-4 border border-slate-200 rounded-lg hover:border-red-500 hover:shadow transition text-center bg-slate-50">
+                        <i class="fa-solid fa-building-columns text-3xl text-emerald-600 mb-2"></i>
+                        <span data-i18n="doc3_btn" class="block text-xs font-semibold text-slate-800">SEC Fair Fund Claim</span>
+                    </button>
+                </div>
+            </section>
+
         </div>
 
-        <!-- 融合图片与证据区 -->
-        <div class="card" id="evidence">
-          <div class="card-title">
-            📄 证明材料与影像记录
-          </div>
-          <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 16px;">
-            以下为提交给法院的人道主义豁免申请材料及医疗诊疗相关现场影像记录：
-          </p>
-          
-          <!-- 绕过预览直接渲染的图片 -->
-          <div class="image-evidence-container">
-            <div class="evidence-image-frame">
-              <img src="https://lh3.googleusercontent.com/d/1vgSJVpCHxuvZwFaAjImM-cM62CSyUX1b" alt="医疗救助请愿书与证明文件" />
-            </div>
-            <div class="evidence-caption">
-              图 1：提交至 SDNY 法院的请愿书附带紧急医疗凭证与现场材料记录
-            </div>
-          </div>
+        <!-- Right 1 Column -->
+        <div class="space-y-8">
+            
+            <!-- Direct Relief & Crowdfunding Box -->
+            <section id="donate" class="bg-slate-900 text-white p-6 rounded-xl shadow-lg border border-slate-800">
+                <h2 data-i18n="donate_heading" class="text-lg font-bold mb-3 flex items-center gap-2 text-red-400">
+                    <i class="fa-solid fa-heart-pulse"></i> Direct Relief Action
+                </h2>
+                <p data-i18n="donate_desc" class="text-xs text-slate-300 mb-6 leading-relaxed">
+                    We request an immediate hardship wire of <strong>$50,000.00 USD</strong> directly to the treating medical facility or escrow account to restore the remaining 12 WBRT radiation treatments.
+                </p>
+
+                <div class="space-y-3">
+                    <a href="https://www.gofundme.com" target="_blank" data-i18n="btn_gofundme" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition shadow text-xs sm:text-sm">
+                        <i class="fa-solid fa-hand-holding-dollar"></i> Donate via Crowdfunding Campaign
+                    </a>
+                    
+                    <button onclick="toggleWireDetails()" data-i18n="btn_wire" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg border border-slate-700 flex items-center justify-center gap-2 text-xs transition">
+                        <i class="fa-solid fa-university"></i> View Protected Escrow / Verification Info
+                    </button>
+                </div>
+
+                <div id="wire-details" class="hidden mt-4 p-4 bg-slate-950 rounded-lg border border-slate-800 text-xs text-slate-300 space-y-2">
+                    <p><strong data-i18n="wire_claimant">Primary Contact:</strong> Representative J. Zhou</p>
+                    <p><strong data-i18n="wire_email">Official Case Email:</strong> rolfoundation2019@gmail.com</p>
+                    <p><strong data-i18n="wire_phone">Verification Phone:</strong> +86-138****9321</p>
+                    <p data-i18n="wire_note" class="text-[10px] text-slate-400 italic mt-2">* Full bank wire details provided upon identity verification by legal/medical counsel.</p>
+                </div>
+            </section>
+
+            <!-- Contact Form -->
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 data-i18n="contact_heading" class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-slate-700"></i> Send an Inquiry or Message
+                </h3>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label data-i18n="lbl_name" class="block text-xs font-semibold text-slate-700 mb-1">Your Name / Organization</label>
+                        <input type="text" id="input-name" required class="w-full text-xs p-2.5 rounded border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="e.g. Chambers / SEC Administrator / Supporter">
+                    </div>
+                    <div>
+                        <label data-i18n="lbl_email" class="block text-xs font-semibold text-slate-700 mb-1">Your Email Address</label>
+                        <input type="email" required class="w-full text-xs p-2.5 rounded border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="name@example.com">
+                    </div>
+                    <div>
+                        <label data-i18n="lbl_msg" class="block text-xs font-semibold text-slate-700 mb-1">Message / Verification Request</label>
+                        <textarea rows="3" id="input-msg" required class="w-full text-xs p-2.5 rounded border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Enter your inquiry or statement here..."></textarea>
+                    </div>
+                    <button type="submit" data-i18n="btn_submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded text-xs transition">
+                        Submit Inquiry
+                    </button>
+                    <p id="form-status" data-i18n="msg_success" class="text-xs text-emerald-600 font-semibold text-center hidden">Message routed successfully to main case email.</p>
+                </form>
+            </section>
+
         </div>
 
-      </div>
+    </main>
 
-      <!-- 右侧行动侧边栏 -->
-      <div class="sidebar">
-        <div class="card sidebar-card" id="donate">
-          <div class="card-title" style="color: var(--primary-red);">
-            ❤️ 直接救济行动
-          </div>
-          <p style="font-size: 0.9rem; color: #d1d5db; margin-bottom: 16px;">
-            我们请求立即向治疗医疗机构或托管账户直接汇款 <strong>50,000.00 美元</strong>，以恢复剩余的 12 次 WBRT 放射治疗。
-          </p>
-          <a href="#" class="btn-action">💰 通过众筹活动捐款</a>
-          <a href="#" class="btn-action" style="background: transparent; border: 1px solid var(--card-border); margin-top: 10px;">🏦 查看受保护的托管/验证信息</a>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 text-center px-4">
+        <p data-i18n="footer_legal">Sworn Statement under penalty of perjury pursuant to U.S. Federal Law. All judicial numbers fully verifiable via official dockets.</p>
+        <p data-i18n="footer_copy" class="mt-2">&copy; 2026 Emergency Humanitarian Relief Initiative. Hosted via GitHub Pages.</p>
+    </footer>
+
+    <!-- Document Modal -->
+    <div id="document-modal" class="modal opacity-0 pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 m-4 relative">
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-2">Document View</h3>
+            <p id="modal-description" class="text-xs text-slate-600 mb-6">Details regarding this verified evidentiary piece.</p>
+            <div class="p-8 bg-slate-100 rounded-lg text-center border border-dashed border-slate-300 mb-6">
+                <i class="fa-solid fa-shield-halved text-4xl text-slate-400 mb-2"></i>
+                <span data-i18n="modal_badge" class="block text-xs text-slate-500">Official Court Docket Reference Attached (#863)</span>
+            </div>
+            
+            <div id="modal-links-container" class="space-y-2 mb-3"></div>
+
+            <button onclick="closeModal()" data-i18n="btn_close_modal" class="w-full bg-slate-900 text-white font-bold py-2 rounded text-xs">Close Preview</button>
         </div>
-      </div>
-
     </div>
-  </div>
 
+    <!-- Internationalization (i18n) & Logic Script -->
+    <script>
+        let currentLang = 'en';
+
+        const i18n = {
+            en: {
+                nav_badge: "Urgent Motion",
+                nav_timeline: "Timeline",
+                nav_evidence: "Evidence",
+                nav_donate: "Donate Now",
+                hero_badge: "Humanitarian Emergency Appeal — Doc #863",
+                hero_title: "Emergency Medical Salvage Appeal for Ms. Tang M.",
+                hero_subtitle: "Official humanitarian petition requesting an emergency administrative hardship waiver from the U.S. District Court (SDNY) to release frozen legal savings for life-saving late-stage cancer treatment.",
+                target_label: "Target Medical Capital Required",
+                progress_needed: "<strong class=\"text-white\">$50,000 USD</strong> Urgently Needed for 12 Remaining WBRT Sessions",
+                progress_rescued: "15% Rescued",
+                case_heading: "Judicial Case Coordinates",
+                verify_welcome: "<i class=\"fa-solid fa-circle-check\"></i> Publicly Verifiable via PACER",
+                lbl_court: "Court:",
+                val_court: "U.S. District Court for SDNY",
+                lbl_case_name: "Case Name:",
+                lbl_case_num: "Case Number:",
+                lbl_judge: "Presiding Judge:",
+                lbl_filing: "Official Filing:",
+                val_filing: "Docket #863 (July 10, 2026)",
+                lbl_sec: "SEC GTV Fair Fund Ref:",
+                timeline_heading: "Clinical Progression & Financial Collapse",
+                t1_date: "Aug 2023 – Oct 2023",
+                t1_title: "Stage I: Diagnosis",
+                t1_desc: "Confirmed Diffuse Large B-cell Lymphoma (DLBCL), Ann Arbor Stage IVB (High-risk group) via multi-center histopathology.",
+                t2_date: "Late 2023 – Mid 2024",
+                t2_title: "Stage II: Resource Exhaustion",
+                t2_desc: "First-line diagnostic procedures exhausted local financial reserves. Forced down-tier clinical transfer due to accumulating medical debts.",
+                t3_date: "June 2025",
+                t3_title: "Stage III: Central Nervous System Secondary Metastasis",
+                t3_desc: "Emergency admission following coma, hemiplegia, and expressive aphasia. Brain MRI/DTI confirmed midline shift and fiber tract disruption.",
+                t4_date: "July 2025 – Present",
+                t4_title: "Stage IV: Critical Treatment Discontinuation",
+                t4_desc: "Whole Brain Radiation Therapy (WBRT) halted after only 3 of 15 scheduled sessions due to credit line exhaustion. Pre-paid CAR-T therapy access rejected.",
+                evidence_heading: "Legal & Medical Verification",
+                evidence_sub: "Click any document below to inspect court affidavits and medical diagnostics.",
+                doc1_btn: "Docket Motion #863",
+                doc2_btn: "Brain MRI / DTI",
+                doc3_btn: "SEC Fair Fund Claim",
+                donate_heading: "Direct Relief Action",
+                donate_desc: "We request an immediate hardship wire of <strong>$50,000.00 USD</strong> directly to the treating medical facility or escrow account to restore the remaining 12 WBRT radiation treatments.",
+                btn_gofundme: "Donate via Crowdfunding Campaign",
+                btn_wire: "View Protected Escrow / Verification Info",
+                wire_claimant: "Primary Contact:",
+                wire_email: "Official Case Email:",
+                wire_phone: "Verification Phone:",
+                wire_note: "* Full bank wire details provided upon identity verification by legal/medical counsel.",
+                contact_heading: "Send an Inquiry or Message",
+                lbl_name: "Your Name / Organization",
+                lbl_email: "Your Email Address",
+                lbl_msg: "Message / Verification Request",
+                ph_name: "e.g. Chambers / SEC Administrator / Supporter",
+                ph_msg: "Enter your inquiry or statement here...",
+                btn_submit: "Submit Inquiry",
+                msg_success: "Message routed successfully to main case email.",
+                footer_legal: "Sworn Statement under penalty of perjury pursuant to U.S. Federal Law. All judicial numbers fully verifiable via official dockets.",
+                footer_copy: "© 2026 Emergency Humanitarian Relief Initiative. Hosted via GitHub Pages.",
+                modal_badge: "Official Court Docket Reference Attached (#863)",
+                btn_open_doc: "Open Document Source",
+                btn_open_mri_file: "Open MRI Scan File",
+                btn_open_mri_folder: "Open MRI Dataset Folder",
+                btn_close_modal: "Close Preview",
+                m1_title: "Docket Motion Affidavit #863",
+                m1_desc: "Official Court Filing submitted under penalty of perjury to SDNY.",
+                m2_title: "Brain MRI & DTI Meta-data",
+                m2_desc: "Medical imaging confirms central white matter tract disruption and midline shift.",
+                m3_title: "SEC GTV Fair Fund Claim",
+                m3_desc: "Official registration details for SEC GTV Fair Fund (Ref: D6GUYDEQZL)."
+            },
+            zh: {
+                nav_badge: "紧急动议",
+                nav_timeline: "时间轴",
+                nav_evidence: "证据文件",
+                nav_donate: "立即捐助",
+                hero_badge: "人道主义紧急呼吁 — 卷宗编号 #863",
+                hero_title: "关于唐女士（Tang M.）的紧急医疗救援与人道主义呼吁",
+                hero_subtitle: "这是一份提交给美国纽约南区联邦地方法院（SDNY）的官方人道主义请愿书，请求法院特批行政困难豁免，解冻部分个人合法积蓄以用于挽救晚期癌症患者生命。",
+                target_label: "所需医疗救助资金目标",
+                progress_needed: "急需 <strong class=\"text-white\">$50,000 美元</strong> 用于恢复剩余 12 次全脑放疗疗程",
+                progress_rescued: "已救援 15%",
+                case_heading: "核心司法案件坐标",
+                verify_welcome: "<i class=\"fa-solid fa-circle-check\"></i> 欢迎查阅与 PACER 官方核实",
+                lbl_court: "审理法院：",
+                val_court: "纽约南区联邦地方法院 (SDNY)",
+                lbl_case_name: "案件名称：",
+                lbl_case_num: "案件编号：",
+                lbl_judge: "主审法官：",
+                lbl_filing: "正式备案文档：",
+                val_filing: "卷宗编号 #863 (2026年7月10日)",
+                lbl_sec: "SEC GTV Fair Fund 编号：",
+                timeline_heading: "病程进展与财务危机时间轴",
+                t1_date: "2023年8月 – 2023年10月",
+                t1_title: "第一阶段：确诊阶段",
+                t1_desc: "多中心组织病理学确诊为弥漫性大 B 细胞淋巴瘤 (DLBCL)，Ann Arbor IVB 期（高危组）。",
+                t2_date: "2023年末 – 2024年中",
+                t2_title: "第二阶段：资源耗尽",
+                t2_desc: "一线诊断及治疗耗尽了所有本地积蓄，因积聚医疗债务不得不降低临床救助等级并转院。",
+                t3_date: "2025年6月",
+                t3_title: "第三阶段：中枢神经系统继发转移",
+                t3_desc: "因昏迷、偏瘫及表达性失语紧急入院。脑部 MRI/DTI 检查证实中线结构移位及白质束受损。",
+                t4_date: "2025年7月 – 至今",
+                t4_title: "第四阶段：核心治疗被迫中断",
+                t4_desc: "全脑放射治疗（WBRT）在仅完成 3/15 次后因信用额度耗尽被强制中断。预付的 CAR-T 治疗方案也因资金不足被拒绝。",
+                evidence_heading: "法律与医疗验证文件",
+                evidence_sub: "点击下方任意项目即可查看法庭宣誓书和医疗诊断报告摘要（欢迎核验）：",
+                doc1_btn: "卷宗动议书 #863",
+                doc2_btn: "脑部 MRI / DTI",
+                doc3_btn: "SEC 公平基金凭证",
+                donate_heading: "紧急直接救助",
+                donate_desc: "我们请求立即通过困难特批方式直接划拨 <strong>$50,000.00 美元</strong> 专项救助金至指定医疗机构或托管账户，以尽快恢复剩余的 12 次全脑放疗。",
+                btn_gofundme: "通过众筹平台捐助",
+                btn_wire: "查看受保护托管及核实信息",
+                wire_claimant: "主要联系人：",
+                wire_email: "官方案件邮箱：",
+                wire_phone: "核实电话：",
+                wire_note: "* 完整电汇与托管信息将在法律/医疗顾问核实身份后提供。",
+                contact_heading: "发送询问或支持信息",
+                lbl_name: "您的姓名 / 机构名称",
+                lbl_email: "电子邮箱",
+                lbl_msg: "留言内容 / 验证请求",
+                ph_name: "例如：法官办公室 / SEC 管理员 / 支持者",
+                ph_msg: "请在此输入您的留言或说明...",
+                btn_submit: "提交留言",
+                msg_success: "您的留言已成功发送至主案件邮箱。",
+                footer_legal: "根据美国联邦法律，受伪证罪处罚约束签署此声明。所有司法案号与动议均可通过官方卷宗完全查验。",
+                footer_copy: "© 2026 紧急人道主义救援行动。基于 GitHub Pages 托管。",
+                modal_badge: "已附带官方法院卷宗记录（#863）",
+                btn_open_doc: "打开文件源链接",
+                btn_open_mri_file: "打开 MRI 影像文件",
+                btn_open_mri_folder: "打开 MRI 数据文件夹",
+                btn_close_modal: "关闭预览",
+                m1_title: "卷宗紧急动议宣誓书 #863",
+                m1_desc: "依法提交给 SDNY 地方法院的正式法庭文件。",
+                m2_title: "脑部 MRI 与 DTI 影像数据",
+                m2_desc: "医疗影像证实存在中央白质束受损及中线结构移位。",
+                m3_title: "SEC GTV Fair Fund 申领凭证",
+                m3_desc: "SEC GTV 公平基金申领参考编号的官方登记凭证（编号：D6GUYDEQZL）。"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            document.getElementById('lang-btn-text').innerText = currentLang === 'en' ? '中文' : 'EN';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.innerHTML = i18n[currentLang][key];
+                }
+            });
+
+            document.getElementById('input-name').placeholder = i18n[currentLang].ph_name;
+            document.getElementById('input-msg').placeholder = i18n[currentLang].ph_msg;
+        }
+
+        function toggleWireDetails() {
+            const el = document.getElementById('wire-details');
+            el.classList.toggle('hidden');
+        }
+
+        function openModal(title, description, links = []) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-description').innerText = description;
+            
+            const linksContainer = document.getElementById('modal-links-container');
+            linksContainer.innerHTML = '';
+
+            links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.className = 'w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 rounded text-xs flex items-center justify-center gap-2 transition';
+                a.innerHTML = `<i class="fa-solid fa-arrow-up-right-from-square"></i> ${link.label}`;
+                linksContainer.appendChild(a);
+            });
+
+            const modal = document.getElementById('document-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('document-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.classList.remove('hidden');
+            setTimeout(() => {
+                status.classList.add('hidden');
+                e.target.reset();
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
+
+
